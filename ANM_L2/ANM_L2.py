@@ -1,5 +1,5 @@
 
-
+import fileinput
 #====================== EXAMPLE 1
 s="this is a string"
 print(s.find("is"))
@@ -75,8 +75,10 @@ if amount !=0:
 	print("Noi dung can tim ton tai: ",amount)
 else:
 	print("Noi dung can tim khong ton tai")
-
 infile.close()
+with fileinput.FileInput("a.txt", inplace=True, backup='.bak') as file:
+    for line in file:
+        print(line.replace("moveeeeeeeeeeeeeeee", "!!!===STOP===!!!"), end='')
 
 
 
