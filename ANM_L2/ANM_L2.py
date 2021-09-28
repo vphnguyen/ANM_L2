@@ -25,40 +25,55 @@ FormattedString = f % (x,y)
 print(FormattedString)
 #====================== 
 
-print("=============================================")
+print("=======================ONE LINE======================")
 #====================== OPEN
 infile =open ('a.txt','r')
 #====================== ONE LINE FINDING
 sample= input("Nội dung mà bạn cần tìm (trong 1 dòng) là:")
 amount =0
+linenum=1
 for line in infile:
 	while line.find(sample) >= 0:
-		print(line.strip())
+		print("Dong thu "+str(linenum)+" :"+line.strip())
 		amount +=1
 		line=line[line.find(sample)+len(sample):]
+	linenum+=1
 if amount !=0:
 	print("Noi dung can tim ton tai: ",amount)
 else:
 	print("Noi dung can tim khong ton tai")
 
-
+infile.close()
 #==========================================	
 
-sample= input("Nội dung mà bạn cần tìm (trong 1 dòng) là:")
+print("=====================TWO LINE==================")
+infile =open ('a.txt','r')
+#====================== TWO LINE FINDING
+sample= input("Nội dung mà bạn cần tìm (trong 2 dòng) là:")
 amount =0
+linenum=1
+last_line=""
 for line in infile:
+	line=line.strip()
+	last_line+=line[0:len(sample)+1]
+	while last_line.find(sample) >= 0:
+		print("Tim thay sample trong 2 dong rieng biet: "+str(linenum-1)+" va "+str(linenum))
+		last_line=last_line[last_line.find(sample)+len(sample):]
+		amount+=1
+	# INLINE
 	while line.find(sample) >= 0:
-		print(line.strip())
+		print("Dong thu "+str(linenum)+" :"+line.strip())
 		amount +=1
 		line=line[line.find(sample)+len(sample):]
+	linenum+=1
+	last_line=line[ len(line)-len(sample)    :    len(line)   ]
+
 if amount !=0:
 	print("Noi dung can tim ton tai: ",amount)
 else:
 	print("Noi dung can tim khong ton tai")
 
-
-
-
+infile.close()
 
 
 
@@ -66,4 +81,4 @@ else:
 
 
 #====================== CLOSE
-infile.close()
+
