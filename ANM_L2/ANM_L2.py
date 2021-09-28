@@ -76,10 +76,15 @@ if amount !=0:
 else:
 	print("Noi dung can tim khong ton tai")
 infile.close()
+
+
+sample1= input("Thay thế: ")
+
+sample2= input("Bằng nội dung: ")
+
 with fileinput.FileInput("a.txt", inplace=True, backup='.bak') as file:
     for line in file:
-        print(line.replace("moveeeeeeeeeeeeeeee", "!!!===STOP===!!!"), end='')
-
+        print(line.replace(sample1, sample2), end='')
 
 
 
