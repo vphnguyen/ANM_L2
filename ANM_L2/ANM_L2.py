@@ -55,7 +55,9 @@ linenum=1
 last_line=""
 for line in infile:
 	line=line.strip()
+	#ghep last line voi phan dau cua line moi co chieu dai bang sample. last line (lenght) =[ Sample | Sample ]
 	last_line+=line[0:len(sample)+1]
+	# Tim thoi nao, tim duoc thi loai bo de tim cai phia sau.
 	while last_line.find(sample) >= 0:
 		print("Tim thay sample trong 2 dong rieng biet: "+str(linenum-1)+" va "+str(linenum))
 		last_line=last_line[last_line.find(sample)+len(sample):]
@@ -66,6 +68,7 @@ for line in infile:
 		amount +=1
 		line=line[line.find(sample)+len(sample):]
 	linenum+=1
+	#Lay doan sau co chieu dai = sample cho vao last line de tim vong sau
 	last_line=line[ len(line)-len(sample)    :    len(line)   ]
 
 if amount !=0:
